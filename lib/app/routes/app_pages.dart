@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import 'package:getxecomerce/app/modules/auth/bindings/auth_binding.dart';
+import 'package:getxecomerce/app/modules/auth/views/auth_view.dart';
 import 'package:getxecomerce/app/modules/home/bindings/home_binding.dart';
 import 'package:getxecomerce/app/modules/home/views/home_view.dart';
 
@@ -9,12 +11,18 @@ class AppPages {
   AppPages._();
 
   static const INITIAL = Routes.HOME;
+  static const AUTH = Routes.AUTH;
 
   static final routes = [
     GetPage(
       name: _Paths.HOME,
       page: () => HomeView(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.AUTH,
+      page: () => AuthView(),
+      binding: AuthBinding(),
     ),
   ];
 }
