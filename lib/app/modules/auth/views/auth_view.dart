@@ -10,7 +10,8 @@ class AuthView extends GetView<AuthController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Padding(
+      body: Container(
+        // this will become an animated container with fade in animation
         padding: EdgeInsets.all(Get.width * .1 / 3),
         child: SingleChildScrollView(
           child: Column(
@@ -19,16 +20,25 @@ class AuthView extends GetView<AuthController> {
               header(),
               defaultSizeBox(),
               Form(
+                key: controller.formkey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     FormTextField(
+                      validator: (value) {
+                        controller.emailValidator(value);
+                      },
+                      controller: controller.emailController,
                       textLabel: "Email",
                       texthint: "example@email.com",
                       onsaved: () {},
                     ),
                     defaultSizeBox(),
                     FormTextField(
+                      controller: controller.passwordConroller,
+                      validator: (value) {
+                        controller.passwordValidator(value);
+                      },
                       textLabel: "password",
                       texthint: "* * * * * *",
                       onsaved: () {},
@@ -41,70 +51,88 @@ class AuthView extends GetView<AuthController> {
                       ),
                       alignment: Alignment.bottomRight,
                     ),
-                    Container(
-                      padding: EdgeInsets.only(top: Get.height * .1),
-                      child: Text(
-                        "-OR-",
-                        style: Get.theme.textTheme.headline6!.apply(
-                          color: Colors.black.withOpacity(0.7),
-                        ),
-                      ),
-                      alignment: Alignment.center,
-                    ),
                     defaultSizeBox(),
                     ElevatedButton(
-                      onPressed: () {},
-                      child: Padding(
-                        padding: EdgeInsets.all(Get.width * .1 / 4),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding:
-                                  EdgeInsets.only(right: Get.width * .1 / 3),
-                              child: Image(
-                                height: Get.width * .1 * .8,
-                                width: Get.width * .1 * .8,
-                                image: const AssetImage(
-                                  "assets/images/Facebook.png",
-                                ),
-                              ),
-                            ),
-                            const Text(
-                              "Sign In With Facebook",
-                              style: TextStyle(color: Colors.black),
-                            )
-                          ],
-                        ),
+                      style: ElevatedButton.styleFrom(
+                        primary: Get.theme.primaryColor,
                       ),
-                    ),
-                    defaultSizeBox(),
-                    ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.login();
+                      },
                       child: Padding(
-                        padding: EdgeInsets.all(Get.width * .1 / 4),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding:
-                                  EdgeInsets.only(right: Get.width * .1 / 3),
-                              child: Image(
-                                height: Get.width * .1 * .8,
-                                width: Get.width * .1 * .8,
-                                image: const AssetImage(
-                                    "assets/images/Google.png"),
+                          padding: EdgeInsets.all(Get.width * .1 / 4),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Text(
+                                "Sign In",
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w400),
                               ),
-                            ),
-                            const Text(
-                              "Sign In With Google",
-                              style: TextStyle(color: Colors.black),
-                            )
-                          ],
-                        ),
-                      ),
+                            ],
+                          )),
                     ),
                   ],
+                ),
+              ),
+              defaultSizeBox(),
+              Container(
+                child: Text(
+                  "-OR-",
+                  style: Get.theme.textTheme.headline6!.apply(
+                    color: Colors.black.withOpacity(0.7),
+                  ),
+                ),
+                alignment: Alignment.center,
+              ),
+              defaultSizeBox(),
+              ElevatedButton(
+                onPressed: () {},
+                child: Padding(
+                  padding: EdgeInsets.all(Get.width * .1 / 4),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(right: Get.width * .1 / 3),
+                        child: Image(
+                          height: Get.width * .1 * .8,
+                          width: Get.width * .1 * .8,
+                          image: const AssetImage(
+                            "assets/images/Facebook.png",
+                          ),
+                        ),
+                      ),
+                      const Text(
+                        "Sign In With Facebook",
+                        style: TextStyle(color: Colors.black),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              defaultSizeBox(),
+              ElevatedButton(
+                onPressed: () {},
+                child: Padding(
+                  padding: EdgeInsets.all(Get.width * .1 / 4),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(right: Get.width * .1 / 3),
+                        child: Image(
+                          height: Get.width * .1 * .8,
+                          width: Get.width * .1 * .8,
+                          image: const AssetImage("assets/images/Google.png"),
+                        ),
+                      ),
+                      const Text(
+                        "Sign In With Google",
+                        style: TextStyle(color: Colors.black),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],

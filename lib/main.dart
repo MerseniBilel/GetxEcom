@@ -12,6 +12,7 @@ void main() {
       title: "Application",
       theme: appThemeData,
       initialRoute: AppPages.AUTH,
+      defaultTransition: Transition.fadeIn,
       getPages: AppPages.routes,
     ),
   );
