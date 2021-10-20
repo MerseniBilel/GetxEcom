@@ -19,7 +19,7 @@ class RegisterView extends GetView<RegisterController> {
             children: [
               Text(
                 "Sign Up,",
-                style: Get.theme.textTheme.headline4!.apply(
+                style: Get.theme.textTheme.headline5!.apply(
                   color: Colors.black,
                 ),
               ),
@@ -38,34 +38,34 @@ class RegisterView extends GetView<RegisterController> {
                   children: [
                     FormTextField(
                       validator: (value) {
-                        //
+                        return controller.nameValidator(value);
                       },
                       textLabel: "Name",
                       texthint: "Merseni Bilel",
                       onsaved: (value) {
-                        //
+                        controller.name = value;
                       },
                     ),
                     defaultSizedBox(),
                     FormTextField(
                       validator: (value) {
-                        //
+                        return controller.emailValidator(value);
                       },
                       textLabel: "Email",
                       texthint: "example@email.com",
                       onsaved: (value) {
-                        //
+                        controller.email = value;
                       },
                     ),
                     defaultSizedBox(),
                     FormTextField(
                       validator: (value) {
-                        //
+                        return controller.passwordValidator(value);
                       },
                       textLabel: "password",
                       texthint: "* * * * * *",
                       onsaved: (value) {
-                        //
+                        controller.password = value;
                       },
                     ),
                     Container(
@@ -81,14 +81,16 @@ class RegisterView extends GetView<RegisterController> {
                       style: ElevatedButton.styleFrom(
                         primary: Get.theme.primaryColor,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.register();
+                      },
                       child: Padding(
                         padding: EdgeInsets.all(Get.width * .1 / 4),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const [
                             Text(
-                              "Sign In",
+                              "Sign Up",
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.w400),
                             ),
@@ -97,6 +99,66 @@ class RegisterView extends GetView<RegisterController> {
                       ),
                     ),
                   ],
+                ),
+              ),
+              defaultSizedBox(),
+              Container(
+                child: Text(
+                  "-OR-",
+                  style: Get.theme.textTheme.headline6!.apply(
+                    color: Colors.black.withOpacity(0.7),
+                  ),
+                ),
+                alignment: Alignment.center,
+              ),
+              defaultSizedBox(),
+              ElevatedButton(
+                onPressed: () {},
+                child: Padding(
+                  padding: EdgeInsets.all(Get.width * .1 / 4),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(right: Get.width * .1 / 3),
+                        child: Image(
+                          height: Get.width * .1 * .8,
+                          width: Get.width * .1 * .8,
+                          image: const AssetImage(
+                            "assets/images/Facebook.png",
+                          ),
+                        ),
+                      ),
+                      const Text(
+                        "Sign In With Facebook",
+                        style: TextStyle(color: Colors.black),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              defaultSizedBox(),
+              ElevatedButton(
+                onPressed: () {},
+                child: Padding(
+                  padding: EdgeInsets.all(Get.width * .1 / 4),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(right: Get.width * .1 / 3),
+                        child: Image(
+                          height: Get.width * .1 * .8,
+                          width: Get.width * .1 * .8,
+                          image: const AssetImage("assets/images/Google.png"),
+                        ),
+                      ),
+                      const Text(
+                        "Sign In With Google",
+                        style: TextStyle(color: Colors.black),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],

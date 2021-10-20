@@ -161,7 +161,7 @@ class AuthView extends GetView<AuthController> {
           children: [
             Text(
               "Welcome,",
-              style: Get.theme.textTheme.headline4!.apply(
+              style: Get.theme.textTheme.headline5!.apply(
                 color: Colors.black,
               ),
             ),
