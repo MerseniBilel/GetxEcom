@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 
 class FormTextField extends StatelessWidget {
   final String textLabel;
-  final Function onsaved;
+  final FormFieldSetter<String>? onsaved;
   final String? Function(String?)? validator;
   final String texthint;
-  final TextEditingController controller;
   const FormTextField({
     Key? key,
     required this.textLabel,
     required this.texthint,
     required this.onsaved,
     required this.validator,
-    required this.controller,
   }) : super(key: key);
 
   @override
@@ -26,8 +24,9 @@ class FormTextField extends StatelessWidget {
               const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
         ),
         TextFormField(
-          controller: controller,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: validator,
+          onSaved: onsaved,
           decoration: InputDecoration(hintText: texthint),
         ),
       ],

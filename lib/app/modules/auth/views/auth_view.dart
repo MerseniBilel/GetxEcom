@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getxecomerce/app/modules/auth/views/widgets/form_field.dart';
+import 'package:getxecomerce/app/routes/app_pages.dart';
 import '../controllers/auth_controller.dart';
 
 class AuthView extends GetView<AuthController> {
@@ -26,22 +27,24 @@ class AuthView extends GetView<AuthController> {
                   children: [
                     FormTextField(
                       validator: (value) {
-                        controller.emailValidator(value);
+                        return controller.emailValidator(value);
                       },
-                      controller: controller.emailController,
                       textLabel: "Email",
                       texthint: "example@email.com",
-                      onsaved: () {},
+                      onsaved: (value) {
+                        controller.email = value;
+                      },
                     ),
                     defaultSizeBox(),
                     FormTextField(
-                      controller: controller.passwordConroller,
                       validator: (value) {
-                        controller.passwordValidator(value);
+                        return controller.passwordValidator(value);
                       },
                       textLabel: "password",
                       texthint: "* * * * * *",
-                      onsaved: () {},
+                      onsaved: (value) {
+                        controller.password = value;
+                      },
                     ),
                     Container(
                       padding: EdgeInsets.only(top: Get.height * .1 / 10),
@@ -60,17 +63,18 @@ class AuthView extends GetView<AuthController> {
                         controller.login();
                       },
                       child: Padding(
-                          padding: EdgeInsets.all(Get.width * .1 / 4),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Text(
-                                "Sign In",
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.w400),
-                              ),
-                            ],
-                          )),
+                        padding: EdgeInsets.all(Get.width * .1 / 4),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Text(
+                              "Sign In",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.w400),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -171,7 +175,9 @@ class AuthView extends GetView<AuthController> {
           ],
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.toNamed(Routes.REGISTER);
+          },
           child: Text(
             "Sign Up",
             style: TextStyle(

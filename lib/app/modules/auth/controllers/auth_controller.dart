@@ -3,15 +3,9 @@ import 'package:get/get.dart';
 
 class AuthController extends GetxController {
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
-  final passwordConroller = TextEditingController();
-
-  @override
-  void onClose() {
-    emailController.dispose();
-    passwordConroller.dispose();
-    super.onClose();
-  }
+  String? email;
+  String? password;
+  String? name;
 
   String? emailValidator(String? value) {
     if (!GetUtils.isEmail(value!)) {
@@ -24,12 +18,15 @@ class AuthController extends GetxController {
     if (!GetUtils.isLengthBetween(value, 6, 10)) {
       return "Password must be between 6 and 10";
     }
+
     return null;
   }
 
   void login() {
     if (formkey.currentState!.validate()) {
-      print("clicked");
+      formkey.currentState!.save();
+      print(email);
+      print(password);
     }
   }
 }
