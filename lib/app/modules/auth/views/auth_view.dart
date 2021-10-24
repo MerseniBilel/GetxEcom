@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getxecomerce/app/modules/auth/controllers/firebase_controller.dart';
 import 'package:getxecomerce/app/modules/auth/views/widgets/form_field.dart';
 import 'package:getxecomerce/app/routes/app_pages.dart';
 import '../controllers/auth_controller.dart';
 
 class AuthView extends GetView<AuthController> {
-  const AuthView({Key? key}) : super(key: key);
+  AuthView({Key? key}) : super(key: key);
+  final FirebaseController firebaseController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +119,9 @@ class AuthView extends GetView<AuthController> {
               ),
               defaultSizeBox(),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  controller.signInWithGoogle();
+                },
                 child: Padding(
                   padding: EdgeInsets.all(Get.width * .1 / 4),
                   child: Row(

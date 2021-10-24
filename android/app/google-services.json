@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1035924977392",
+    "project_id": "getxecommerce-d181f",
+    "storage_bucket": "getxecommerce-d181f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035924977392:android:5f90ca1e373baf271d3435",
+        "android_client_info": {
+          "package_name": "com.nlus.getxecomerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035924977392-126nh9brd66gpakeg127oc2ah4egc3qm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nlus.getxecomerce",
+            "certificate_hash": "48fccb1964e3de84598a198e4f390be473b72ed4"
+          }
+        },
+        {
+          "client_id": "1035924977392-h5rq33r3cptiqceigm59aditdf8tb90n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDs8WNxXQ6-x8NhEKgxNrLuV02hpNieYLM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1035924977392-h5rq33r3cptiqceigm59aditdf8tb90n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
