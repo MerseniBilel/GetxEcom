@@ -14,31 +14,22 @@
       },
       "oauth_client": [
         {
-          "client_id": "1035924977392-126nh9brd66gpakeg127oc2ah4egc3qm.apps.googleusercontent.com",
+          "client_id": "1035924977392-1e06vkudvfj7vl2t3b3ju44ucnkte7fe.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.nlus.getxecomerce",
-            "certificate_hash": "48fccb1964e3de84598a198e4f390be473b72ed4"
+            "certificate_hash": "12f004f0d615a4c23d6a4f7835c5dcb1593df1cf"
           }
-        },
-        {
-          "client_id": "1035924977392-h5rq33r3cptiqceigm59aditdf8tb90n.apps.googleusercontent.com",
-          "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDs8WNxXQ6-x8NhEKgxNrLuV02hpNieYLM"
+          "current_key": "AIzaSyB1fDHm6r32yQDECmInZ7HzyNA-5lDAYhM"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1035924977392-h5rq33r3cptiqceigm59aditdf8tb90n.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

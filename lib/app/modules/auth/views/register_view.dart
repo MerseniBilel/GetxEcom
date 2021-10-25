@@ -1,11 +1,14 @@
 import 'package:get/get.dart';
 
 import 'package:flutter/material.dart';
+import 'package:getxecomerce/app/modules/auth/controllers/firebase_controller.dart';
 import 'package:getxecomerce/app/modules/auth/controllers/register_controller.dart';
 import 'package:getxecomerce/app/modules/auth/views/widgets/form_field.dart';
 
 class RegisterView extends GetView<RegisterController> {
-  const RegisterView({Key? key}) : super(key: key);
+  RegisterView({Key? key}) : super(key: key);
+
+  final FirebaseController _firebaseController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +142,9 @@ class RegisterView extends GetView<RegisterController> {
               ),
               defaultSizedBox(),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  _firebaseController.signInWithGoogle();
+                },
                 child: Padding(
                   padding: EdgeInsets.all(Get.width * .1 / 4),
                   child: Row(

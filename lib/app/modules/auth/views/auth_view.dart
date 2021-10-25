@@ -93,7 +93,9 @@ class AuthView extends GetView<AuthController> {
               ),
               defaultSizeBox(),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  firebaseController.signInWithFacebook();
+                },
                 child: Padding(
                   padding: EdgeInsets.all(Get.width * .1 / 4),
                   child: Row(
@@ -120,7 +122,7 @@ class AuthView extends GetView<AuthController> {
               defaultSizeBox(),
               ElevatedButton(
                 onPressed: () {
-                  controller.signInWithGoogle();
+                  firebaseController.signInWithGoogle();
                 },
                 child: Padding(
                   padding: EdgeInsets.all(Get.width * .1 / 4),

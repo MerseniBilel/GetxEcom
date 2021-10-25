@@ -1,7 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:getxecomerce/app/modules/auth/controllers/firebase_controller.dart';
 
 class AuthController extends GetxController {
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
@@ -10,8 +9,6 @@ class AuthController extends GetxController {
   String? name;
 
   // firebase stuff
-  FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ["email"]);
 
   String? emailValidator(String? value) {
     if (!GetUtils.isEmail(value!)) {
@@ -28,25 +25,7 @@ class AuthController extends GetxController {
   void login() {
     if (formkey.currentState!.validate()) {
       formkey.currentState!.save();
-      print(email);
-      print(password);
+      FirebaseController().singInWithEmailAndPassword(email!, password!);
     }
-  }
-
-  void signInWithGoogle() async {
-    final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser!.authentication;
-
-    print(googleUser);
-    print(googleAuth);
-
-    // create a new creadential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth!.accessToken,
-      idToken: googleAuth.idToken,
-    );
-
-    await _firebaseAuth.signInWithCredential(credential);
   }
 }
